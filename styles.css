@@ -1,0 +1,19 @@
+.container {
+    width : 360px;
+    height : 500px;
+    display : flex;
+    flex-wrap : wrap;
+    justify-content: space-between;
+    border : 2px solid red;
+}
+
+button {
+    color : red;
+    width: 80px;
+    height: 80px;
+}
+h2 {
+    height : 80px;
+    width : 360px;
+    border : solid 2px green;
+}
