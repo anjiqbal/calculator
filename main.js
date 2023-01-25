@@ -6,6 +6,8 @@ const operators = document.querySelectorAll('.operator')
 
 document.querySelector('#equals').addEventListener('click', equals)
 
+document.querySelector('#decimal').addEventListener('click', decimal)
+
 // selects the element with the id equals and adds an event listener 
 document.querySelector('#equals').addEventListener('click', equals)
 
@@ -39,6 +41,27 @@ function operatorDisplay() {
         })
     }
 }
+
+function decimal() {
+    let numbers = ['1','2','3','4','5','6','7','8','9','0']
+    let operators = ['+', '-', 'x', '/']
+    let onScreenDisplay = document.querySelector('h2')
+    let screen = onScreenDisplay.innerText
+    if(numbers.includes(screen[screen.length-1])){
+        if(screen.includes('.')){
+            alert('please no more decimals')
+        } else {
+        let text = this.textContent
+        onScreenDisplay.innerText += text
+        }
+    } else if (operators.includes(screen[screen.length-1])) {
+        let text = this.textContent
+        onScreenDisplay.innerText += text
+        document.querySelector('#decimal').removeEventListener('click', decimal)
+    }
+    
+}
+
 
 function equals() {
     let sum = document.querySelector('h2').innerText
