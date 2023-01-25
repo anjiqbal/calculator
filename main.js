@@ -28,11 +28,17 @@ function display() {
 //adds the text content of the calling button to the display and then removes the event listeners from all operators so that they can only be used once
 function operatorDisplay() {
     let onScreenDisplay = document.querySelector('h2')
-    let text = this.textContent
-    onScreenDisplay.innerText += text
-    operators.forEach(operator => {
+    if(onScreenDisplay.innerText === '') {
+        console.log(onScreenDisplay)
+        alert('Please enter a number')
+    } else {
+        console.log(onScreenDisplay)
+        let text = this.textContent
+        onScreenDisplay.innerText += text
+        operators.forEach(operator => {
         operator.removeEventListener('click', operatorDisplay)
-    })
+        })
+    }
 }
 
 function equals() {
