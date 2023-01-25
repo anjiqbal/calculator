@@ -4,6 +4,7 @@ const numbers = document.querySelectorAll('.number')
 // selects all elements with a class of operator and assigns it to a variable called operators
 const operators = document.querySelectorAll('.operator')
 
+document.querySelector('#equals').addEventListener('click', equals)
 
 // selects the element with the id equals and adds an event listener 
 document.querySelector('#equals').addEventListener('click', equals)
@@ -29,10 +30,8 @@ function display() {
 function operatorDisplay() {
     let onScreenDisplay = document.querySelector('h2')
     if(onScreenDisplay.innerText === '') {
-        console.log(onScreenDisplay)
         alert('Please enter a number')
     } else {
-        console.log(onScreenDisplay)
         let text = this.textContent
         onScreenDisplay.innerText += text
         operators.forEach(operator => {
@@ -42,6 +41,24 @@ function operatorDisplay() {
 }
 
 function equals() {
+    let sum = document.querySelector('h2').innerText
+// console.log(eval(document.querySelector('h2').innerText))
+if(sum.includes('x')){
+   let sumArr = sum.split('x')
+   document.querySelector('h2').innerText = (+sumArr[0] * +sumArr[1])
+}
+if(sum.includes('/')){
+    let sumArr = sum.split('/')
+    document.querySelector('h2').innerText = (+sumArr[0] / +sumArr[1])
+ }
+ if(sum.includes('+')){
+    let sumArr = sum.split('+')
+    document.querySelector('h2').innerText = (+sumArr[0] + +sumArr[1])
+ }
+ if(sum.includes('-')){
+    let sumArr = sum.split('-')
+    document.querySelector('h2').innerText = (+sumArr[0] - +sumArr[1])
+ }
 
 }
 
