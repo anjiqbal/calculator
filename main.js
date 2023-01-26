@@ -21,8 +21,13 @@ operators.forEach(operator => {
 
 function display() {
     let onScreenDisplay = document.querySelector('h2')
-    let text = this.textContent
+    if(onScreenDisplay.innerText.length === 13) {
+        alert('maximum length achieved, please enter an operator or press equals')
+    } else {
+        let text = this.textContent
     onScreenDisplay.innerText += text
+    }
+    
 }
 
 
