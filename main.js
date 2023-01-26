@@ -11,6 +11,8 @@ document.querySelector('#decimal').addEventListener('click', decimal)
 // selects the element with the id equals and adds an event listener 
 document.querySelector('#equals').addEventListener('click', equals)
 
+document.querySelector('.clear'). addEventListener('click', clear)
+
 //use forEach to iterate over the node lists and add an event listener to each that activates on click and calls a function
 numbers.forEach(num => {
     num.addEventListener('click', display)
@@ -19,6 +21,9 @@ numbers.forEach(num => {
 operators.forEach(operator => {
     operator.addEventListener('click', operatorDisplay)
 })
+
+let num1 = ''
+let num2 = ''
 
 //assigns the text content of the calling button to a variable which is then added to the h2
 function display() {
@@ -31,11 +36,14 @@ function display() {
 //adds the text content of the calling button to the display and then removes the event listeners from all operators so that they can only be used once
 function operatorDisplay() {
     let onScreenDisplay = document.querySelector('h2')
+    let minDisplay = document.querySelector('h3')
     if(onScreenDisplay.innerText === '') {
         alert('Please enter a number')
     } else {
         let text = this.textContent
-        onScreenDisplay.innerText += text
+        minDisplay.innerText = onScreenDisplay.innerText += text
+        onScreenDisplay.innerText = ''
+        
         operators.forEach(operator => {
         operator.removeEventListener('click', operatorDisplay)
         })
@@ -64,8 +72,8 @@ function decimal() {
 
 
 function equals() {
-    let sum = document.querySelector('h2').innerText
-// console.log(eval(document.querySelector('h2').innerText))
+    let sum = document.querySelector('h3').innerText += document.querySelector('h2').innerText
+
 if(sum.includes('x')){
    let sumArr = sum.split('x')
    document.querySelector('h2').innerText = (+sumArr[0] * +sumArr[1])
@@ -83,8 +91,38 @@ if(sum.includes('/')){
     document.querySelector('h2').innerText = (+sumArr[0] - +sumArr[1])
  }
 
+ const numbers = document.querySelectorAll('.number')
+
+const operators = document.querySelectorAll('.operator')
+
+document.querySelector('#equals').removeEventListener('click', equals)
+
+document.querySelector('#decimal').removeEventListener('click', decimal)
+
+numbers.forEach(num => {
+    num.removeEventListener('click', display)
+})
+
+operators.forEach(operator => {
+    operator.removeEventListener('click', operatorDisplay)
+})
+
 }
 
 
-// const str = '777+455'
-// console.log(str.split('+'))
+function clear() {
+    document.querySelector('h2').innerText = ''
+    document.querySelector('h3').innerText = ''
+    document.querySelector('#equals').addEventListener('click', equals)
+
+document.querySelector('#decimal').addEventListener('click', decimal)
+
+numbers.forEach(num => {
+    num.addEventListener('click', display)
+})
+
+operators.forEach(operator => {
+    operator.addEventListener('click', operatorDisplay)
+})
+
+}

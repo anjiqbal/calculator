@@ -17,3 +17,9 @@ h2 {
     width : 360px;
     border : solid 2px green;
 }
+
+h3 {
+    height : 50px;
+    width : 360px;
+    border : solid 2px pink;
+}
