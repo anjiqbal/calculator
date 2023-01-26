@@ -21,10 +21,8 @@ numbers.forEach(num => {
 operators.forEach(operator => {
     operator.addEventListener('click', operatorDisplay)
 })
-
 let num1 = ''
 let num2 = ''
-
 //assigns the text content of the calling button to a variable which is then added to the h2
 function display() {
     let onScreenDisplay = document.querySelector('h2')
@@ -72,6 +70,7 @@ function decimal() {
 
 
 function equals() {
+ 
     let sum = document.querySelector('h3').innerText += document.querySelector('h2').innerText
 
 if(sum.includes('x')){
